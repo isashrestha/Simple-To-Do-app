@@ -24,3 +24,4 @@ def delete(request, id):
 def search(request, id):
     n = Todolist.objects.get(id=id)
     return render(request, 'todolist/index.html', {'n': n})
+
