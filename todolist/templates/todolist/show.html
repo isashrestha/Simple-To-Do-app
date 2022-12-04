@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+  <style>
+    table,
+    th,
+    td {
+      border-bottom: 1px solid #ddd;
+    }
+    td {
+      text-align: center;
+    }
+    ul.a {
+      list-style-type: circle;
+    }
+    th {
+      background-color: #ffc0cb;
+    }
+    button {
+      color: white;
+      border: none;
+      margin: 4px 2px;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+      font-size: 12px;
+     
+    }
+    table.center {
+        margin-left: auto; 
+        margin-right: auto;
+    }
+  </style>
+  <body>
+    <table class="center" style="width: 70%" >
+      <tr>
+        <th>Action</th>
+        <th>To Do Task </th>
+      </tr>
+      <form action="" method="POST">
+        {% csrf_token %} {{ forms.as_p }}
+        <div class="input-group-btn">
+           <button
+            type="submit"
+            name="submit"
+            id="submit"
+            class="btn btn-secondary btn-lg"
+          > 
+            <i class="fa fa-add"></i>
+            <a href="/add_notes/"> Add Task </a>
+          </button> 
+          </div>
+      </form>
+
+      {% for todos in all_tasks %}
+      <tr>
+        <td>
+              <button><a href="/update/{{todos.id}}"> Edit </a></button> |
+              <button><a href="/delete/{{ todos.id }}"> Delete </a></button>
+    
+        </td>
+        <td>{{ todos.todo }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

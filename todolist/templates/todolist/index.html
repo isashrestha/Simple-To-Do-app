@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="panel-body">
-              <form method="post" id="to_do_form" action="/add_notes/">
+              <form method="POST" id="to_do_form" action="/add_notes/">
                 {% csrf_token %}
                 <div class="input-group">
                   <input
@@ -38,58 +38,16 @@
                     id="todo"
                     class="form-control input-lg"
                     autocomplete="off"
-                    placeholder="Add task"
+                    placeholder="Type......."
                   />
-                  <div class="input-group-btn">
-                    <button
-                      type="submit"
-                      name="submit"
-                      id="submit"
-                      class="btn btn-secondary btn-lg"
-                    >
-                      <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                  </div>
                 </div>
-              </form>
-              <br />
-              <div class="list-group">
-                <ul class="list-wrapper">
-                  {% for todolist in all_tasks %}
-                  <li class="list-group-item">
-                    {{ todolist.todo}}
-                    <form
-                      class=""
-                      action="delete/{{ todolist.id}}/"
-                      style="display: inline"
-                      method="post"
-                    >
-                      {% csrf_token %}
-                      <input
-                        type="submit"
-                        name=""
-                        value="Done"
-                        style="float: right"
-                      />
-                    </form>
-                  </li>
-                  {% endfor %}
-                </ul>
-                <br />
-              </div>
-            </div>
+              </form
+             </div>
           </div>
           <div class="col-sm-2"></div>
         </div>
       </div>
     </div>
-    <style>
-      .list-wrapper {
-        padding: 0;
-        text-align: left;
-        list-style: none;
-        margin-bottom: 0;
-      }
-    </style>
+
   </body>
 </html>
